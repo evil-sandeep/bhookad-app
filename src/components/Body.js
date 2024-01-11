@@ -5,6 +5,7 @@ import { filterData } from "../utils/helper";
 import ShimmerCard from "./Shimmer";
 import useResturantList from "../utils/useResturantList";
 import useOnline from "../utils/useOnline";
+import TicTacToe from "./TicTacToe";
 
 const Body = () => {
 
@@ -13,7 +14,11 @@ const Body = () => {
 
     const isOnline = useOnline();
     if (!isOnline) {
-return <p> 🔴 Offline Please check ur internet connection </p>
+        return <>
+            <p> 🔴 Offline Please check ur internet connection </p>
+            <TicTacToe/>
+        </>
+
     }
 
     return filterResturant.length === 0 ?
