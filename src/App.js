@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import Body from './components/Body';
 import Header from './components/NavBar';
 import Footer from './components/Footer'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import About from './components/About';
 import Error from './components/Error';
 import Contact from './components/Contact';
 import Cart from './components/Cart';
 import ProductDetails from './components/ProductDetails';
 import ProfileClass from './components/ProfileClass';
+import ShimmerCard from './components/Shimmer';
+// import InstaMart from './components/InstaMart';
+
+const InstaMart = lazy(() => import('./components/InstaMart'));
+const About = lazy(() => import('./components/About'))
+
+
 
 function App() {
   return (
@@ -29,39 +35,47 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: '/',
-        element:<Body/>
+        element: <Body />
       },
       {
         path: 'about',
-        element:<About/>,
-        children:[
+        element: <Suspense fallback={<ShimmerCard />}>
+          <About />
+        </Suspense>,
+        children: [
           {
-            path:'profile',
-            element:<ProfileClass/>,
+            path: 'profile',
+            element: <ProfileClass />,
           }
         ]
       },
       {
         path: 'contact',
-        element:<Contact/>
+        element: <Contact />
       },
       {
         path: 'cart',
-        element:<Cart/>
+        element: <Cart />
       },
       {
         path: '/resturant/:id',
-        element:<ProductDetails/>
+        element: <ProductDetails />
+      },
+      {
+        path: '/instamart',
+        element: <Suspense fallback={<ShimmerCard />}>
+          <InstaMart />
+        </Suspense>
       },
 
     ]
   }
 ])
 
-function Main(){
-  return(
+function Main() {
+  return (
     <RouterProvider router={appRouter}>
-      <App/>
+      <App />
     </RouterProvider>
   )
 }
