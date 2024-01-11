@@ -1,0 +1,33 @@
+/* Add these styles to your stylesheet or inline */
+
+.product-details-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-details-container h1,
+  .product-details-container h2,
+  .product-details-container p {
+    margin-bottom: 10px;
+  }
+  
+  .product-details-container img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+  
+  .product-details-container h3 {
+    margin-top: 20px;
+  }
+  
+  .product-details-container .loading {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
