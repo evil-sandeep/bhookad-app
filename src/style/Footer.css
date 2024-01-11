@@ -1,0 +1,44 @@
+/* Footer.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Ensure the body takes up at least the full viewport height */
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding: 10px; /* Adjust the padding to control the height */
+    font-size: 12px; /* Adjust the font size */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-media a,
+.footer-links a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.social-media img {
+    width: 18px; /* Adjust the icon size */
+    height: 18px;
+    border-radius: 50%;
+}
+
+.copyright {
+    margin-top: 10px; /* Adjust the margin as needed */
+}
