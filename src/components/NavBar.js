@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import '../style/Header.css' // Import your CSS for styling
 import Logo from '../assests/img/bhookadLogo.png'
 import { Link } from 'react-router-dom'
+import useOnline from '../utils/useOnline';
 
 
 const Header = () => {
     const [isLoggedIn, setLoggedIn] = useState(false);
+    const isOnline = useOnline();
 
     const handleToggleLogin = () => {
         setLoggedIn(!isLoggedIn);
@@ -26,7 +28,7 @@ const Header = () => {
                     <Link to='/cart'> <li>Cart</li></Link>
                 </ul>
             </nav>
-
+            <h4 className='check' >{isOnline ? "✅":"🔴"}</h4>
             <div className="login-toggle">
                 <button onClick={handleToggleLogin}>
                     {isLoggedIn ? 'Logout' : 'Login'}
