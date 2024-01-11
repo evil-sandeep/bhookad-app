@@ -1,32 +1,24 @@
-import React, { useEffect, useState } from "react"
-import { API_URL } from "../config";
+import React, {  useState } from "react"
 import '../style/Resturant.css'
-import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { filterData } from "../utils/helper";
+import ShimmerCard from "./Shimmer";
+import useResturantList from "../utils/useResturantList";
 
-const filterData = (restaurants, searchText) => {
-    return restaurants.filter((restaurant) =>
-        restaurant.title.toLowerCase().includes(searchText.toLowerCase())
-    );
-}
+
 
 const Body = () => {
-    const [resList, setResList] = useState([]);
+    const { resList, filterResturant, updateFilterResturant }= useResturantList([]);
     const [searchTxt, setSearchTxt] = useState('');
-    const [filterResturant, setFilterResturant] = useState([])
+   
 
-    useEffect(() => {
-        ResturaltList()
-    }, []);
+    
 
-    const ResturaltList = async () => {
-        const data = await fetch(API_URL)
-        const json = await data.json();
-        setResList(json.products)
-        setFilterResturant(json.products)
-    }
-
-    return filterResturant.length ===0 ? (<Shimmer/>): (
+    return filterResturant.length === 0 ?
+     <>
+     <ShimmerCard/>
+     <p>Search Item is Not Found</p> 
+    </> : (
         <>
             <div className="search-container">
                 <input type="text"
@@ -38,23 +30,20 @@ const Body = () => {
 
                 <button className="search-btn" onClick={() => {
                     const data = filterData(resList, searchTxt)
-                    setFilterResturant(data);
+                    updateFilterResturant(data);
                 }}>Search</button>
             </div>
 
             <div className="restaurant-container" >
 
                 {filterResturant.map((items) => (
-                    <>
-                    <Link to={'/resturant/'+items.id} key={items.id}>
-                    <div key={items.id} className="card">
-                        <img src={items?.images[0]} alt="" />
-                        <h3> Name:{items?.title} </h3>
-                        {/* <h3>Price:{items?.price}</h3>
-                        <h4>Rating: {items?.rating}</h4> */}
-                    </div>
+                    <Link to={'/resturant/' + items.id} key={items.id}>
+                        <div className="card">
+                            <img src={items?.images[0]} alt="" />
+                            <h3> {items?.title} </h3>
+                            <h3>Price:${items?.price}</h3>
+                        </div>
                     </Link>
-                    </>
                 ))}
             </div>
         </>
