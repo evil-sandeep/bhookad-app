@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Body from './components/Body';
 import Header from './components/NavBar';
 import Footer from './components/Footer'
@@ -9,6 +8,7 @@ import Error from './components/Error';
 import Contact from './components/Contact';
 import Cart from './components/Cart';
 import ProductDetails from './components/ProductDetails';
+import ProfileClass from './components/ProfileClass';
 
 function App() {
   return (
@@ -33,7 +33,13 @@ const appRouter = createBrowserRouter([
       },
       {
         path: 'about',
-        element:<About/>
+        element:<About/>,
+        children:[
+          {
+            path:'profile',
+            element:<ProfileClass/>,
+          }
+        ]
       },
       {
         path: 'contact',
