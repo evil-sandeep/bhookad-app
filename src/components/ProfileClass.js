@@ -1,4 +1,5 @@
 import React from "react"
+import { GITHUB_URL } from "../config";
 
 class Profile extends React.Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class Profile extends React.Component {
     }
     async componentDidMount() {
         try {
-            const response = await fetch('https://api.github.com/users/evil-sandeep')
+            const response = await fetch(GITHUB_URL)
             if (!response.ok) {
                 throw new Error();
             }
