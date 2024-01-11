@@ -25,7 +25,7 @@ class About extends React.Component {
                 <h1><b>About Us Page</b></h1>
                 <h4> hello i am sandeep kumar sahoo</h4>
                 <Link to='/about/profile'>
-                    <button onClick={this.handleToggleProfile}>{this.state.profile.show ? 'Go to About' : 'Go to Profile'}</button>
+                    <button onClick={this.handleToggleProfile}>'Go to Profile</button>
                 </Link>
                 <Outlet />
             </div>
