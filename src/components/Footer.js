@@ -3,8 +3,8 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-1">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className=" flex justify-start social-media">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div className="flex justify-center md:justify-start social-media mb-2 md:mb-0">
           <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
             <img src="/images/facebook-icon.png" alt="Facebook" className="w-6 h-6 mr-2" />
           </a>
@@ -15,7 +15,7 @@ const Footer = () => {
             <img src="/images/youtube-icon.png" alt="YouTube" className="w-6 h-6" />
           </a>
         </div>
-        <div className="footer-links">
+        <div className="footer-links mt-2 md:mt-0">
           <a href="/about" className="text-gray-300 hover:text-white mr-4">About Us</a>
           <a href="/contact" className="text-gray-300 hover:text-white">Contact Us</a>
         </div>
@@ -28,3 +28,4 @@ const Footer = () => {
 };
 
 export default Footer;
+ 

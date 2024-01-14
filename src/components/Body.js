@@ -11,7 +11,6 @@ const Body = () => {
     const [searchTxt, setSearchTxt] = useState('');
 
     const isOnline = useOnline();
-
     if (!isOnline) {
         return (
             <>
@@ -20,7 +19,7 @@ const Body = () => {
             </>
         );
     }
-
+    
     return filterResturant.length === 0 ? (
         <>
             <ShimmerCard />
@@ -48,11 +47,11 @@ const Body = () => {
                     Search
                 </button>
             </div>
-
-            <div className="restaurant-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 pt-2">
+    
+            <div className="restaurant-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 pt-2">
                 {filterResturant.map((items) => (
                     <Link to={'/resturant/' + items.id} key={items.id}>
-                        <div className="card bg-white p-4 shadow-lg  transition-transform transform hover:scale-105">
+                        <div className="card bg-white p-4 shadow-lg transition-transform transform hover:opacity-75 hover:scale-105">
                             <img src={items?.images[0]} alt="" className="w-full h-48 object-cover mb-2" />
                             <h3 className="text-lg font-semibold">{items?.title}</h3>
                             <h3 className="text-green-600">Price: ${items?.price}</h3>
@@ -62,6 +61,7 @@ const Body = () => {
             </div>
         </>
     );
-};
-
-export default Body;
+    };
+    
+    export default Body;
+    
