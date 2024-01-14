@@ -14,6 +14,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "precache": "workbox-cli generateSW workbox-config.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -38,6 +39,7 @@
     ]
   },
   "devDependencies": {
-    "workbox-cli": "^7.0.0"
+    "postcss-nesting": "^12.0.2",
+    "tailwindcss": "^3.4.1"
   }
 }

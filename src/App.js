@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from 'react';
+import '../src/index.css'
 import Body from './components/Body';
 import Header from './components/NavBar';
 import Footer from './components/Footer'
@@ -9,6 +10,7 @@ import Cart from './components/Cart';
 import ProductDetails from './components/ProductDetails';
 import ProfileClass from './components/ProfileClass';
 import ShimmerCard from './components/Shimmer';
+
 // import InstaMart from './components/InstaMart';
 
 const InstaMart = lazy(() => import('./components/InstaMart'));
