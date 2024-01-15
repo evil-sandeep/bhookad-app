@@ -1,5 +1,6 @@
+// TicTacToe.js
+
 import React, { useState } from 'react';
-// import '../style/TicTacToe.css'
 
 const TicTacToe = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -18,7 +19,10 @@ const TicTacToe = () => {
   };
 
   const renderSquare = (index) => (
-    <button className="square" onClick={() => handleClick(index)}>
+    <button
+      className="w-16 h-16 bg-blue-500 text-white text-2xl font-bold border border-white focus:outline-none transition-transform transform hover:scale-105"
+      onClick={() => handleClick(index)}
+    >
       {board[index]}
     </button>
   );
@@ -28,28 +32,21 @@ const TicTacToe = () => {
     : `Next player: ${isXNext ? 'X' : 'O'}`;
 
   return (
-    <div>
-      <div className="status">{status}</div>
-      <div className="board-row">
-        {renderSquare(0)}
-        {renderSquare(1)}
-        {renderSquare(2)}
-      </div>
-      <div className="board-row">
-        {renderSquare(3)}
-        {renderSquare(4)}
-        {renderSquare(5)}
-      </div>
-      <div className="board-row">
-        {renderSquare(6)}
-        {renderSquare(7)}
-        {renderSquare(8)}
+    <div className="flex flex-col items-center mt-10">
+      <div className="status text-2xl font-bold mb-4">{status}</div>
+      <div className="grid grid-cols-3 gap-4">
+        {[0, 1, 2].map((row) => (
+          <div key={row} className="board-row">
+            {[0, 1, 2].map((col) => (
+              <div key={col}>{renderSquare(row * 3 + col)}</div>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-// Helper function to determine the winner
 const calculateWinner = (squares) => {
   const lines = [
     [0, 1, 2],
