@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import Logo from '../assests/img/bhookadLogo.png';
 import { Link } from 'react-router-dom';
 import useOnline from '../utils/useOnline';
+import UserContext from '../utils/userContext';
 
 const Header = () => {
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [isMenuOpen, setMenuOpen] = useState(false);
     const isOnline = useOnline();
+    const {user}=useContext(UserContext);
 
     const handleToggleLogin = () => {
         setLoggedIn(!isLoggedIn);
@@ -51,8 +53,9 @@ const Header = () => {
                             <Link to="/instamart">InstaMart</Link>
                         </li>
                     </ul>
-                <h4 className="check  ml-10">{isOnline ? 'Online✅' : 'Offline🔴'}</h4>
+                <h4 className="check  ml-10">{isOnline ? 'Online✅' : 'Offline🔴'}</h4> 
                 </nav>
+                <strong>{user.name}</strong>
                 <div className="login-toggle hidden lg:block">
                     <button
                         className="bg-blue-500 text-white px-4 py-2 rounded"

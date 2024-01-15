@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import ShimmerCard from "./Shimmer";
 import useResturantList from "../utils/useResturantList";
 import useOnline from "../utils/useOnline";
 import TicTacToe from "./TicTacToe";
+import UserContext from "../utils/userContext";
 
 const Body = () => {
     const { resList, filterResturant, updateFilterResturant } = useResturantList([]);
     const [searchTxt, setSearchTxt] = useState('');
+    const {user,setUpdateUser}=useContext(UserContext)
+   
 
     const isOnline = useOnline();
     if (!isOnline) {
@@ -46,6 +49,13 @@ const Body = () => {
                 >
                     Search
                 </button>
+
+                 <input className="border border-blue-600 cursor-pointer"  value={user.name} onChange={
+                    e=>{setUpdateUser({
+                        name:e.target.value,
+                        email:"newemal@.com"
+                    })}
+                 } />
             </div>
     
             <div className="restaurant-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 pt-2">

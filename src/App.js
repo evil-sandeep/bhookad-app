@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import '../src/index.css'
 import Body from './components/Body';
 import Header from './components/NavBar';
@@ -10,6 +10,7 @@ import Cart from './components/Cart';
 import ProductDetails from './components/ProductDetails';
 import ProfileClass from './components/ProfileClass';
 import ShimmerCard from './components/Shimmer';
+import UserContext from './utils/userContext';
 
 // import InstaMart from './components/InstaMart';
 
@@ -19,12 +20,21 @@ const About = lazy(() => import('./components/About'))
 
 
 function App() {
+  const [updateUser,setUpdateUser]=useState({
+    name:"Sandeep Kumaar Sahoo sahoo",
+    email:"chandanbabul@gmail.com"
+  });
   return (
     <div className="App">
+      <UserContext.Provider
+      value={{
+        user:updateUser,
+        setUpdateUser:setUpdateUser
+      }} >
       <Header />
       <Outlet />
       <Footer />
-
+      </UserContext.Provider>
     </div>
   );
 }
