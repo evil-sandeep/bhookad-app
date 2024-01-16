@@ -2,10 +2,22 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import ShimmerCard from "./Shimmer";
 import useProduct from "../utils/useProductItem";
+import { useDispatch } from "react-redux";
+import { addItem, clearCart } from "../utils/cartSlice";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const productDetails = useProduct(id);
+
+  const dispatch = useDispatch();
+
+  const handleChange = () => {
+    dispatch(addItem(productDetails));
+  }
+  const removeItem = () => {
+    dispatch(clearCart([]))
+  }
+  
 
   return !productDetails ? (
     <ShimmerCard />
@@ -23,7 +35,23 @@ const ProductDetails = () => {
           <p className="text-indigo-600 mb-2">Brand: {productDetails.brand}</p>
           <p className="text-purple-500 mb-2">Category: {productDetails.category}</p>
           <h3 className="text-lg font-semibold mb-2 mt-4">Additional Images:</h3>
+          <div>
+            <button
+              className="bg-blue-500 text-white font-bold py-2 px-4 rounded border border-blue-700 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+              onClick={() => handleChange(productDetails)}
+            >
+              Add
+            </button>
+
+            <button
+              className="bg-blue-500 text-white font-bold py-2 px-4 rounded border border-blue-700 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 gap-1"
+              onClick={() => removeItem()}
+            >
+              Remove
+            </button> 
+          </div>
         </div>
+
 
         {/* Right Side (Thumbnail) */}
         <div className="w-full md:w-1/2">

@@ -11,6 +11,8 @@ import ProductDetails from './components/ProductDetails';
 import ProfileClass from './components/ProfileClass';
 import ShimmerCard from './components/Shimmer';
 import UserContext from './utils/userContext';
+import { Provider } from 'react-redux';
+import store from './utils/store';
 
 // import InstaMart from './components/InstaMart';
 
@@ -21,11 +23,12 @@ const About = lazy(() => import('./components/About'))
 
 function App() {
   const [updateUser,setUpdateUser]=useState({
-    name:"Sandeep Kumaar Sahoo sahoo",
+    name:"Sandeep Kumaar Sahoo",
     email:"chandanbabul@gmail.com"
   });
   return (
     <div className="App">
+      <Provider store={store}>
       <UserContext.Provider
       value={{
         user:updateUser,
@@ -35,6 +38,7 @@ function App() {
       <Outlet />
       <Footer />
       </UserContext.Provider>
+      </Provider>
     </div>
   );
 }

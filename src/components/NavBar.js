@@ -3,12 +3,16 @@ import Logo from '../assests/img/bhookadLogo.png';
 import { Link } from 'react-router-dom';
 import useOnline from '../utils/useOnline';
 import UserContext from '../utils/userContext';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [isMenuOpen, setMenuOpen] = useState(false);
     const isOnline = useOnline();
     const {user}=useContext(UserContext);
+
+    const cartSlice=useSelector(store=>store.cart.items)
+    console.log(cartSlice)
 
     const handleToggleLogin = () => {
         setLoggedIn(!isLoggedIn);
@@ -47,7 +51,7 @@ const Header = () => {
                             <Link to="/contact">Contact</Link>
                         </li>
                         <li>
-                            <Link to="/cart">Cart</Link>
+                            <Link to="/cart">Cart {cartSlice.length}</Link>
                         </li>
                         <li>
                             <Link to="/instamart">InstaMart</Link>
