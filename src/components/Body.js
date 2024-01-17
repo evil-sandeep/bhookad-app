@@ -32,6 +32,7 @@ const Body = () => {
         <>
             <div className="search-container text-black-600 p-1 ml-2 mt-2">
                 <input
+                data-testid='search-input'
                     type="text"
                     className="search-input border p-2 rounded-md h-8 focus:bg-green-50 m-2"
                     placeholder="Search..."
@@ -41,7 +42,7 @@ const Body = () => {
                     }}
                 />
                 <button
-                    data-testid='search-test'
+                    data-testid='search-btn'
                     className="search-btn bg-green-500 text-white h-8 ml-2 w-20 rounded-md hover:bg-green-600 active:bg-green-700 focus:outline-none focus:ring-0 focus:ring-green-300 "
                     onClick={() => {
                         const data = filterData(resList, searchTxt);
@@ -60,7 +61,7 @@ const Body = () => {
                  } /> */}
             </div>
 
-            <div className="restaurant-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 pt-2">
+            <div data-testid="res-list"  className="restaurant-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 pt-2">
                 {filterResturant.map((items) => (
                     <Link to={'/resturant/' + items.id} key={items.id}>
                         <div className="card bg-white p-4 shadow-lg transition-transform transform hover:opacity-75 hover:scale-105">
