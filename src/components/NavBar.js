@@ -108,6 +108,7 @@ const Header = () => {
                     <li>
                         <Link
                             to="/cart"
+                            data-testid="cart"
                             onClick={handleToggleMenu}
                             className={`${
                                 isMenuOpen ? 'shadow-sm  text-black bg-gray-500  rounded' : ''

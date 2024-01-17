@@ -34,3 +34,18 @@ test("Check online status show on  rendering header", () => {
 
     expect(onlineStatus.innerHTML).toBe('Online✅')
 }) 
+
+//Test-3 Check Cart test
+test("Check cart status 0 on  rendering header", () => {
+    render(
+        <StaticRouter>
+        <Provider store={store}>
+            <Header />
+        </Provider>
+        </StaticRouter>
+    )
+    const cartStatus=screen.getByTestId('cart')
+    console.log(cartStatus)
+
+    expect(cartStatus.innerHTML).toBe('Cart')
+}) 
