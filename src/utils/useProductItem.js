@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { API_URL } from '../config';
 
 
@@ -25,7 +25,7 @@ const useProduct = (id) => {
                     console.error(`Error: Product with ID ${id} not found in the response`);
                 }
             } catch (error) {
-                console.error("Error fetching product details:", error);
+                console.log("Error fetching product details:", error);
             }
         };
         getProductInfo();

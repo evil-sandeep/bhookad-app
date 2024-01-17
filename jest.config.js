@@ -90,7 +90,7 @@ const config = {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
    moduleNameMapper: {
-    "\\.(jpg|png|svg)$":"../mocks/dummyLogo.js"
+    "\\.(jpg|png|svg|gif)$":"../mocks/dummyLogo.js"
    },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

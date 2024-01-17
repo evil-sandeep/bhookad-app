@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import ShimmerCard from "./Shimmer";
@@ -11,7 +11,7 @@ const Body = () => {
     const { resList, filterResturant, updateFilterResturant } = useResturantList([]);
     const [searchTxt, setSearchTxt] = useState('');
     // const {user,setUpdateUser}=useContext(UserContext)
-   
+
 
     const isOnline = useOnline();
     if (!isOnline) {
@@ -22,7 +22,7 @@ const Body = () => {
             </>
         );
     }
-    
+
     return filterResturant.length === 0 ? (
         <>
             <ShimmerCard />
@@ -41,6 +41,7 @@ const Body = () => {
                     }}
                 />
                 <button
+                    data-testid='search-test'
                     className="search-btn bg-green-500 text-white h-8 ml-2 w-20 rounded-md hover:bg-green-600 active:bg-green-700 focus:outline-none focus:ring-0 focus:ring-green-300 "
                     onClick={() => {
                         const data = filterData(resList, searchTxt);
@@ -50,7 +51,7 @@ const Body = () => {
                     Search
                 </button>
 
-                 {/* <input className="border border-blue-600 cursor-pointer"  value={user.name} onChange={
+                {/* <input className="border border-blue-600 cursor-pointer"  value={user.name} onChange={
                     e=>{setUpdateUser({
                         name:e.target.value,
                         email:"newemal@.com"
@@ -58,7 +59,7 @@ const Body = () => {
                 }
                  } /> */}
             </div>
-    
+
             <div className="restaurant-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 pt-2">
                 {filterResturant.map((items) => (
                     <Link to={'/resturant/' + items.id} key={items.id}>
@@ -72,7 +73,6 @@ const Body = () => {
             </div>
         </>
     );
-    };
-    
-    export default Body;
-    
+};
+
+export default Body;

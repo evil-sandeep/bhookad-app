@@ -15,7 +15,7 @@ const useResturantList = () => {
                 setResList(data.products)
                 setFilterResturant(data.products)
             } catch (error) {
-                console.error('Error fetching restaurant data:', error);
+                console.log('Error fetching restaurant data:', error);
             }
         }
         fetchResturant();
