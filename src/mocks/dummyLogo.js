@@ -1,0 +1,1 @@
+export default "dummylogo.png"

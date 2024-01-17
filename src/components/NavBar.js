@@ -11,7 +11,7 @@ const Header = () => {
     const isOnline = useOnline();
     const {user}=useContext(UserContext);
 
-    const cartSlice=useSelector(store=>store.cart.items)
+    const cartSlice=useSelector((store)=>store.cart.items)
     console.log(cartSlice)
 
     const handleToggleLogin = () => {
@@ -27,7 +27,7 @@ const Header = () => {
             <div className="container mx-auto flex items-center justify-between">
                 <div className="flex items-center">
                     <Link to="/">
-                        <img src={Logo} alt="Bhookad" className="h-12" />
+                        <img data-testid='logo' src={Logo} alt="Bhookad" className="h-12" />
                     </Link>
                    
                 </div>
