@@ -57,7 +57,7 @@ const Header = () => {
                             <Link to="/instamart">InstaMart</Link>
                         </li>
                     </ul>
-                <h4 className="check  ml-10">{isOnline ? 'Online✅' : 'Offline🔴'}</h4> 
+                <h4 data-testid="online-status"  className="check  ml-10">{isOnline ? 'Online✅' : 'Offline🔴'}</h4> 
                 </nav>
                 <strong>{user.name}</strong>
                 <div className="login-toggle hidden lg:block">
