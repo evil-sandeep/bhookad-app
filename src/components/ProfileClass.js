@@ -25,7 +25,7 @@ class Profile extends React.Component {
                 userInfo: data
             })
         } catch (error) {
-console.log(error+'Api data fetch error')
+            console.log(error + 'Api data fetch error')
         }
 
         console.log('api call')
@@ -38,26 +38,22 @@ console.log(error+'Api data fetch error')
 
     render() {
         return (
-            <div key={this.state.userInfo?.id}>
-                <h1>Name:{this.state.userInfo?.name}</h1>
-                <img src={this.state.userInfo?.avatar_url
+            <div className="flex justify-between items-center" key={this.state.userInfo?.id}>
+                <div className="font-bold text-2xl ">
+                    <h1 >Name :🕴️{this.state.userInfo?.name}</h1><br />
+                    <h1>Bio : {this.state.userInfo?.bio}</h1><br />
+                    <h1>User-Name :👤{this.state.userInfo?.login}</h1><br />
+                    <h1>URL : {this.state.userInfo?.url}</h1><br />
+                    <h1>Repos_url :📢{this.state.userInfo?.repos_url}</h1><br />
+                    <h1>Public_repos :🔄️{this.state.userInfo?.public_repos}</h1><br />
+                    <h1>Location :📌{this.state.userInfo?.location}</h1>
+
+
+
+
+                </div>
+                <img className=" mb-5  p-2" src={this.state.userInfo?.avatar_url
                 } alt="Profile-img" />
-                <h1>bio:{this.state.userInfo?.bio}</h1>
-                <h1>created_at:{this.state.userInfo?.created_at}</h1>
-                <h1>events_url:{this.state.userInfo?.events_url}</h1>
-                <h1>followers:{this.state.userInfo?.followers}</h1>
-                <h1>following:{this.state.userInfo?.following}</h1>
-                <h1>url:{this.state.userInfo?.url}</h1>
-                <h1>repos_url:{this.state.userInfo?.repos_url}</h1>
-                <h1>public_repos:{this.state.userInfo?.public_repos}</h1>
-                <h1>html_url:{this.state.userInfo?.html_url}</h1>
-                <h1>location:{this.state.userInfo?.location}</h1>
-                <h1>login:{this.state.userInfo?.login}</h1>
-                <h1>node_id:{this.state.userInfo?.node_id}</h1>
-                <h1>organizations_url:{this.state.userInfo?.organizations_url}</h1>
-                <h1>repos_url:{this.state.userInfo?.repos_url}</h1>
-                <h1>type:{this.state.userInfo?.type}</h1>
-                <h1>received_events_url:{this.state.userInfo?.received_events_url}</h1>
             </div>)
     }
 }
