@@ -17,7 +17,8 @@ const Body = () => {
     if (!isOnline) {
         return (
             <>
-                <p className="text-red-500">🔴 Offline. Please check your internet connection.</p>
+                <p className="text-red-500 text-xl mt-3  animate-pulse">🔴 Offline. Please check your internet connection.</p>
+
                 <TicTacToe />
             </>
         );
@@ -62,12 +63,12 @@ const Body = () => {
             </div>
 
             <div data-testid="res-list"  className="restaurant-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 pt-2">
-                {filterResturant.map((items) => (
+                {filterResturant.slice(5).map((items) => (
                     <Link to={'/resturant/' + items.id} key={items.id}>
                         <div className="card bg-white p-4 shadow-lg transition-transform transform hover:opacity-75 hover:scale-105">
-                            <img src={items?.images[0]} alt="" className="w-full h-48 object-cover mb-2" />
+                            <img src={items?.images[1]} alt="" className="w-full h-48 object-cover mb-2" />
                             <h3 className="text-lg font-semibold">{items?.title}</h3>
-                            <h3 className="text-green-600">Price: ${items?.price}</h3>
+                            <h3 className="text-green-600">Price: ₹{items?.price*64}</h3>
                         </div>
                     </Link>
                 ))}
