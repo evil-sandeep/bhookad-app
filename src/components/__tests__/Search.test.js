@@ -71,6 +71,6 @@ test("Should Food on HomePage", async () => {
     fireEvent.click(searchBtn)
 
     const resList = screen.getByTestId("res-list");  // Corrected this line
-    expect(resList.children.length).toBe(3);
+    expect(resList.length).toBe(3);
     console.log(screen.debug)
 });
