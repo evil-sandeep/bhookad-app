@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { API_URL } from "../config"
+import ShimmerCard from "./Shimmer"
 
 const Section = ({ title, description, isShow, setIsShow }) => {
     return (
@@ -49,7 +50,7 @@ const InstaMart = () => {
 
         fetchData()
     }, [])
-    return (
+    return products === 0 ? (<ShimmerCard />) : (
         < >
             {/* Top Discount Offers */}
             <div>
@@ -95,7 +96,7 @@ const InstaMart = () => {
 
                 {/* Left Arrow */}
                 <div className="flex-shrink-0 w-8 flex items-center justify-center cursor-pointer ">
-                &#x2190;
+                    &#x2190;
                 </div>
 
                 {/* Carousel Items */}

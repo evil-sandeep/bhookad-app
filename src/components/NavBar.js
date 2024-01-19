@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Logo from '../assests/img/bhookadLogo.png';
 import { Link } from 'react-router-dom';
 import useOnline from '../utils/useOnline';
@@ -9,14 +9,16 @@ const Header = () => {
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [isMenuOpen, setMenuOpen] = useState(false);
     const isOnline = useOnline();
-    const {user}=useContext(UserContext);
+    const { user } = useContext(UserContext);
 
-    const cartSlice=useSelector((store)=>store.cart.items)
+    const cartSlice = useSelector((store) => store.cart.items)
     console.log(cartSlice)
 
-    const handleToggleLogin = () => {
+    const handleToggleLogin = ({ user }) => {
         setLoggedIn(!isLoggedIn);
     };
+
+
 
     const handleToggleMenu = () => {
         setMenuOpen(!isMenuOpen);
@@ -29,7 +31,7 @@ const Header = () => {
                     <Link to="/">
                         <img data-testid='logo' src={Logo} alt="Bhookad" className="h-12" />
                     </Link>
-                   
+
                 </div>
                 <div className="lg:hidden">
                     <button
@@ -57,11 +59,13 @@ const Header = () => {
                             <Link to="/instamart">InstaMart</Link>
                         </li>
                     </ul>
-                <h4 data-testid="online-status"  className="check  ml-10">{isOnline ? 'Online✅' : 'Offline🔴'}</h4> 
+                    <h4 data-testid="online-status" className="check  ml-10">{isOnline ? 'Online✅' : 'Offline🔴'}</h4>
                 </nav>
-                <strong>{user.name}</strong>
+                {isLoggedIn && (<strong>{user.name}</strong>)}
+
                 <div className="login-toggle hidden lg:block">
                     <button
+
                         className="bg-blue-500 text-white px-4 py-2 rounded"
                         onClick={handleToggleLogin}
                     >
@@ -76,9 +80,8 @@ const Header = () => {
                         <Link
                             to="/"
                             onClick={handleToggleMenu}
-                            className={`${
-                                isMenuOpen ? ' text-black bg-gray-500 mt-3 rounded ' : ''
-                            } transition duration-300`}
+                            className={`${isMenuOpen ? ' text-black bg-gray-500 mt-3 rounded ' : ''
+                                } transition duration-300`}
                         >
                             Home
                         </Link>
@@ -87,9 +90,8 @@ const Header = () => {
                         <Link
                             to="/about"
                             onClick={handleToggleMenu}
-                            className={`${
-                                isMenuOpen ? ' text-black bg-gray-500 rounded ' : ''
-                            } transition duration-300`}
+                            className={`${isMenuOpen ? ' text-black bg-gray-500 rounded ' : ''
+                                } transition duration-300`}
                         >
                             About
                         </Link>
@@ -98,9 +100,8 @@ const Header = () => {
                         <Link
                             to="/contact"
                             onClick={handleToggleMenu}
-                            className={`${
-                                isMenuOpen ? ' rounded  text-black bg-gray-500 shadow-sm' : ''
-                            } transition duration-300`}
+                            className={`${isMenuOpen ? ' rounded  text-black bg-gray-500 shadow-sm' : ''
+                                } transition duration-300`}
                         >
                             Contact
                         </Link>
@@ -110,9 +111,8 @@ const Header = () => {
                             to="/cart"
                             data-testid="cart"
                             onClick={handleToggleMenu}
-                            className={`${
-                                isMenuOpen ? 'shadow-sm  text-black bg-gray-500  rounded' : ''
-                            } transition duration-300`}
+                            className={`${isMenuOpen ? 'shadow-sm  text-black bg-gray-500  rounded' : ''
+                                } transition duration-300`}
                         >
                             Cart
                         </Link>
@@ -121,9 +121,8 @@ const Header = () => {
                         <Link
                             to="/instamart"
                             onClick={handleToggleMenu}
-                            className={`${
-                                isMenuOpen ? ' text-black bg-gray-500 shadow-sm rounded ring-offset-0 ' : ''
-                            } transition duration-300`}
+                            className={`${isMenuOpen ? ' text-black bg-gray-500 shadow-sm rounded ring-offset-0 ' : ''
+                                } transition duration-300`}
                         >
                             InstaMart
                         </Link>
